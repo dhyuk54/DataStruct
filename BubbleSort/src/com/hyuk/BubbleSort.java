@@ -31,17 +31,21 @@ public class BubbleSort {
     }
 
     public static void bubble_v2(int[] array){
+        // 1.计算出要比较数组中的总长度
+        // 2.数组的总长度赋给一个临时变量
         int  n = array.length -1 ;
         while (true){
-            int last = 0;
+            int last_index = 0;
             for (int i = 0; i < n; i++) {
                 System.out.println("比较次数" + i);
-                if (array[i] > array[i+1]) {
-                    swap(array,i,i+1);
-                    last = i;
+                if (array[i] > array[i+1]) { // 当第一个数和第二个数进行比较时 按升序排序
+                    swap(array,i,i+1); // 交换位置
+                    // 1.记录当前交换位置的index为最终last_index
+                    // 2.从这个index值之后就不需要发生不必要的swap,
+                    last_index = i;
                 }
             }
-            n = last;
+            n = last_index; // 当元素中没有要可交换的值之后 退出 while循环
             System.out.println("第" + n + "轮冒泡" + Arrays.toString(array));
             if (n == 0) {
                 break;
